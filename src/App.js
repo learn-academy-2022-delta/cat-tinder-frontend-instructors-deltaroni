@@ -1,25 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import cats from './mockCats'
+import Header from "./components/Header"
+import Footer from "./components/Footer"
+import CatEdit from "./pages/CatEdit"
+import CatIndex from "./pages/CatIndex"
+import CatNew from "./pages/CatNew"
+import CatShow from "./pages/CatShow"
+import Home from "./pages/Home"
+import NotFound from "./pages/NotFound"
+import {
+  BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cats: cats
+    }
+  }
+
+
+  render() {
+    console.log(this.state.cats)
+    return(
+      // Wrap entire return in <Router>
+      <Router>
+        {/* Header and footer and anything else you want on every page should be inside the Router but outside the Switch */}
+        <Header />
+        {/* Use Switch to be able to switch between pages, so wrap pages only in Switch */}
+        <Switch>
+          {/* Route helps us swap out view and we include a path and a component */}
+          <Route exact path="/" component={Home}  />
+          <Route path="/catedit" component ={CatEdit} />
+          <Route path="/catindex" component ={CatIndex} />
+          <Route path="/catnew" component ={CatNew} />
+          <Route path="/catshow" component ={CatShow} />
+          <Route component={NotFound} />
+        </Switch>
+        <Footer />
+      </Router>
+     
+    )
+  }
 }
 
-export default App;
+export default App
