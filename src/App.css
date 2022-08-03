@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Neucha', cursive;
+}
+.page-body {
+  text-align: center;
+  margin: 3rem;
+  height: 110vh;
+}
+
+/* ---FOOTER--- */
+footer {
+  font-size: 20px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFFEF1;
+  display: flex;
+  justify-content: space-around;
+}
+a {
+  color: #FF0080 !important;
+  text-decoration: none !important;
+}
+a:hover {
+  cursor: pointer !important;
+  color: #FF0080 !important;
+  text-decoration: underline !important;
+}
+
+/* ---FORMS--- */
+form {
+  margin-left: 20%;
+  margin-right: 20%;
+}
+input {
+  text-align: center;
+}
+
+/* ---HEADER--- */
+header {
+  background-color: #EBE0D0;
+  display: flex;
+  justify-content: space-between;
+}
+.cat-logo {
+  width: 150px;
+  margin-left: 20px;
+}
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-right: 50px;
+}
+
+/* ---HOME--- */
+.raisins {
+  height: 500px;
+  border-radius: 50%;
+  border: 3px solid black;
+}
+
+/* ---NOT FOUND--- */
+.cat-friend {
+  width: 400px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
