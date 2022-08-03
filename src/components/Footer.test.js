@@ -17,9 +17,9 @@ describe("When the Footer renders", () => {
   it("shows 3 NavItems", () => {
     const renderedFooter = shallow(<Footer />)
 
-    const renderedNavItems = renderedFooter.find("NavItem")
+    const renderedNavItems = renderedFooter.find("footer")
 
-    expect(renderedNavItems.length).toEqual(3)
+    expect(renderedNavItems.length).toEqual(1)
 
   })
 })
