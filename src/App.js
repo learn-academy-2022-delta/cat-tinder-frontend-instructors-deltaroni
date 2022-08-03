@@ -23,7 +23,7 @@ class App extends Component {
 
 
   render() {
-    console.log(this.state.cats)
+    // console.log(this.state.cats)
     return(
       // Wrap entire return in <Router>
       <Router>
@@ -34,9 +34,13 @@ class App extends Component {
           {/* Route helps us swap out view and we include a path and a component */}
           <Route exact path="/" component={Home}  />
           <Route path="/catedit" component ={CatEdit} />
-          <Route path="/catindex" component ={CatIndex} />
+          <Route path="/catindex" render={() => <CatIndex cats={this.state.cats} />} />
           <Route path="/catnew" component ={CatNew} />
-          <Route path="/catshow" component ={CatShow} />
+          <Route path="/catshow/:id" render={(props) => {
+            let id = +props.match.params.id
+            let cat = this.state.cats.find(catObject => catObject.id === id)
+            return <CatShow cat={cat}/>
+          }} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

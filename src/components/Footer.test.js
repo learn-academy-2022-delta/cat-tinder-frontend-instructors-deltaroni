@@ -14,7 +14,7 @@ import Footer from './Footer'
 Enzyme.configure({ adapter: new Adapter() })
 
 describe("When the Footer renders", () => {
-  it("shows 3 NavItems", () => {
+  it("shows a footer", () => {
     const renderedFooter = shallow(<Footer />)
 
     const renderedNavItems = renderedFooter.find("footer")
