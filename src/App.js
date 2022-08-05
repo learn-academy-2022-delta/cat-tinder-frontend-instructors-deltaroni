@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './App.css'
-import cats from './mockCats'
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import CatEdit from "./pages/CatEdit"
@@ -17,17 +16,51 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      cats: cats
+      cats: []
     }
   }
 
-  createNewCat = (theNewCatObject) =>{
-    console.log(theNewCatObject);
+  componentDidMount() {
+    //to get cat info immediately when app renders
+    this.readCat()
   }
 
+  readCat = () => {
+    fetch("http://localhost:3000/cats")  //the endpoint
+    .then(response => response.json())
+    // takes the array of cats returned and sets it to state  (payload = array of cats)
+    .then(payload => this.setState({cats: payload }))
+    // handle errors if promise is rejected
+    .catch(errors => console.log("Cat read errors: ", errors))
+  }
+
+
+  createNewCat = (theNewCatObject) =>{
+    fetch("http://localhost:3000/cats", {
+      body: JSON.stringify(theNewCatObject),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method:"POST" 
+  })
+  .then(response => response.json())
+  // since no payload, and state needs to be updated with new cat, refresh state by calling readCat()
+  .then(() => this.readCat())
+  .catch(errors => console.log("Cat new errors: ", errors))
+  }
+
+
   updateCat = (cat, id) => {
-    console.log("cat:", cat)
-    console.log("id:", id)
+    fetch(`http://localhost:3000/cats/${id}`, {
+      body: JSON.stringify(cat),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => response.json())
+    .then(() => this.readCat())
+    .catch(errors => console.log("Cat update errors: ", errors))
   }
 
   deleteCat = (id) => {
