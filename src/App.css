@@ -2,19 +2,21 @@
   margin: 0;
   padding: 0;
   font-family: 'Neucha', cursive;
+  text-align: center;
 }
 .page-body {
   text-align: center;
   margin: 3rem;
-  height: 110vh;
+  min-height: calc(100vh - 34px);
 }
 
 /* ---FOOTER--- */
 footer {
   font-size: 20px;
-  position: fixed;
-  bottom: 0;
+  position: sticky;
+  margin: auto;
   width: 100%;
+  height: auto;
   background-color: #FFFEF1;
   display: flex;
   justify-content: space-around;
@@ -22,6 +24,7 @@ footer {
 a {
   color: #FF0080 !important;
   text-decoration: none !important;
+  margin: auto;
 }
 a:hover {
   cursor: pointer !important;
@@ -62,9 +65,35 @@ header {
   border: 3px solid black;
 }
 
+/* ---INDEX--- */
+.index-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: center; 
+}
+.card.card-body {
+  width: 300px;
+  background-color: #FFFEF1;
+  margin: 20px;
+}
+.btn.btn-secondary {
+  background-color: #FF0080;
+  font-weight: bolder;
+}
+.btn.btn-secondary:hover {
+  color: #FF0080;
+  background-color: white;
+}
+
 /* ---NOT FOUND--- */
 .cat-friend {
   width: 400px;
   border: 1px solid black;
   border-radius: 10px;
+}
+
+/* ---SHOW--- */
+.card-show.card.card-body {
+  margin: 0 auto;
 }

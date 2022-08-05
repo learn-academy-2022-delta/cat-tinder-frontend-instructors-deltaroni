@@ -25,6 +25,15 @@ class App extends Component {
     console.log(theNewCatObject);
   }
 
+  updateCat = (cat, id) => {
+    console.log("cat:", cat)
+    console.log("id:", id)
+  }
+
+  deleteCat = (id) => {
+    console.log("deleted", id)
+  }
+
   render() {
     console.log('appjs state: ', this.state)
     return(
@@ -36,7 +45,16 @@ class App extends Component {
         <Switch>
           {/* Route helps us swap out view and we include a path and a component */}
           <Route exact path="/" component={Home}  />
-          <Route path="/catedit" component ={CatEdit} />
+          <Route path="/catedit/:id" render={(props) => {
+            let id = +props.match.params.id
+            let cat = this.state.cats.find(catObject => catObject.id === id)
+            return(
+              <CatEdit 
+                cat={cat}
+                updateCat={this.updateCat}
+              />
+            ) 
+          }} />
           <Route path="/catindex" render={() => <CatIndex cats={this.state.cats} />} />
           <Route path="/catnew"
                  render={() => {
@@ -45,7 +63,12 @@ class App extends Component {
           <Route path="/catshow/:id" render={(props) => {
             let id = +props.match.params.id
             let cat = this.state.cats.find(catObject => catObject.id === id)
-            return <CatShow cat={cat}/>
+            return(
+              <CatShow 
+                cat={cat}
+                deleteCat={this.deleteCat}
+              />
+            )
           }} />
           <Route component={NotFound} />
         </Switch>
