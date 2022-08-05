@@ -68,3 +68,13 @@ header {
   border: 1px solid black;
   border-radius: 10px;
 }
+
+
+/* ---CARD--- */
+.card {
+  padding: 60px
+}
+
+.center-heading {
+  text-align: center;
+}

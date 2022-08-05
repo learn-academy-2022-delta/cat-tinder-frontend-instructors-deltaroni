@@ -8,11 +8,11 @@ class CatIndex extends Component {
     // console.log(this.props.cats)
     return (
       <>
-        <h2>Find your purrfect match</h2>
+        <h2 className='center-heading'>Find your purrfect match</h2>
         <div>
           {this.props.cats && this.props.cats.map(cat => {
             return(
-              <Card key={cat.id}>
+              <Card className='card' key={cat.id}>
                 <CardImg top width="100%" src={cat.image} alt="Card image cap" />
                 <CardBody>
                   <CardTitle>{cat.name}</CardTitle>
